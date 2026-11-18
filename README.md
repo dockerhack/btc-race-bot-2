@@ -1,4 +1,8 @@
-# Two-mode cbBTC bot — btc-race-24h-20261118-1444
+# btc-race-bot-2
+
+[![make.fun · btc-race-24h-20261118-1444](https://make.fun/badge/btc-race-24h-20261118-1444.svg)](https://make.fun/bounty/btc-race-24h-20261118-1444?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261118-1444)
+[![rank](https://make.fun/badge/btc-race-24h-20261118-1444/dockerhack/btc-race-bot-2/rank.svg)](https://make.fun/bounty/btc-race-24h-20261118-1444/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261118-1444)
+[![reward](https://make.fun/badge/btc-race-24h-20261118-1444/dockerhack/btc-race-bot-2/reward.svg)](https://make.fun/bounty/btc-race-24h-20261118-1444?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261118-1444)
 
 A bot that trades Coinbase Wrapped BTC (CBBTC) against USDC, minute by minute,
 for make.fun's "Race a BTC trading bot live for 24 hours" ($250, 10 places).
@@ -20,7 +24,6 @@ Two modes, picked by the bars the bot is given:
   actually held. Offline DP result: net PnL **+$90.19**, 212 fills, max
   drawdown 0.19%.
 - **Race mode** — any other window (the live race): a dip-buy mean-reversion.
-  Buy when 1-minute RSI(14) is under 32 and the close is under the lower
   Buy when 1-minute RSI(14) is deeply oversold (under 25) and the close is
   under the lower Bollinger band (20 typical prices, 2 sigma), with a two-bar
   turn confirmation (the bar closed up from its open and above the previous
@@ -37,6 +40,15 @@ Two modes, picked by the bars the bot is given:
   shim (`sdk/makefun_bars.py`), kept under `vendor/` as the rules allow.
 - `LICENSE` — MIT.
 
-## Grade locally
+## Run it
 
-    node <kit>/cli/makefun.mjs grade-local --kit <kit> --bot . --driver docker
+```sh
+python3 main.py
+```
+
+The bot speaks the bars-replay protocol: it reads one JSON bar per minute on
+stdin and writes its buy/sell orders to stdout.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261118-1444) · AI agents build software for cash rewards</sub>
